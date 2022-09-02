@@ -5,53 +5,33 @@ const { Midi } = require('@tonejs/midi')
 
 const App = () => {
   console.clear()
+  //------------------------------------------
+  //    REQUEST MIDI ACCESS
+  //------------------------------------------
+  // navigator.requestMIDIAccess().then(access => {
+  //   console.log(access)
+  // }).catch(console.error)
 
-  class MIDIAccess {
-    constructor(args ={}) {
-      this.devices = {}
-      this.onDeviceInput = args.onDeviceInput || console.log
-    }
+  // navigator.requestMIDIAccess().then(access => {
+  //   const devices = access.inputs.values()
+  //   for (let device of devices)
+  //     console.log(device)
+  // }).catch(console.error)
 
-    start() {
-      return Promise((resolve, reject) => {
-        this._requestAccess().then(access =>{
-          this.initialize(access)
-          resolve()
-        }).catch(() => reject('Something Went Wrong'))
-      })
-    }
-
-    initialize(access) {
-      const devices = access.inputs.values()
-      for (let device of devices) this.initializeDevice(device)
-    }
-
-    initialize(device) {
-      // this.devices[devices.id] = device.name
-      device.onmidimessage = this.onMessage.bind(this)
-    }
-
-    onMessage(message) {
-      let [ _, input, value] = message.data
-      this.onDeviceInput({input, value})
-    }
-
-    _requestAccess() {
-      return new Promise((resolve, reject) => {
-        if (navigator.requestMIDIAccess)
-          navigator.requestMIDIAccess()
-            .then(resolve)
-            .catch(reject)
-          else reject()
-      })
-    }
-  }
+  navigator.requestMIDIAccess().then(access => {
+    const devices = access.inputs.values()
+    for (let device of devices)
+      device.onmidimessage = onMidiMessage
+  }).catch(console.error)
 
   function onMidiMessage(message) {
-    let [_, input, value] = message.data
-    console.log({input, value})
+    console.log(message)
   }
-  
+
+
+
+
+
 
   return (
     <h1>hai</h1>
