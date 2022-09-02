@@ -8,19 +8,19 @@ const App = () => {
   //------------------------------------------
   //    REQUEST MIDI ACCESS
   //------------------------------------------
-  // navigator.requestMIDIAccess().then(access => {
-  //   console.log(access)
-  // }).catch(console.error)
+  navigator.requestMIDIAccess().then(access => {
+    console.log(access)
+  }).catch(console.error)
 
 
   //------------------------------------------
   //    SHOW DEVICES
   //------------------------------------------
-  // navigator.requestMIDIAccess().then(access => {
-  //   const devices = access.inputs.values()
-  //   for (let device of devices)
-  //     console.log(device)
-  // }).catch(console.error)
+  navigator.requestMIDIAccess().then(access => {
+    const devices = access.inputs.values()
+    for (let device of devices)
+      console.log(device)
+  }).catch(console.error)
 
 
   //------------------------------------------
@@ -102,7 +102,7 @@ const App = () => {
 
 
   return (
-    <h1>hai</h1>
+    <h3>O hai, Hook up your MIDI device, refresh the page and look in your console</h3>
   )
 
 
