@@ -41,6 +41,6 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0",
-    "homepage":"http://IntuitiveHarmony.github.io/midi-controller"
+    "homepage":"http://intuitiveharmony.github.io/midi-controller"
   }
 }
